@@ -35,4 +35,6 @@ jobs:
       - name: build jobs
         run: npm run build
       - name: deploy
-        run: echo "deploying...."
+        run: |
+          echo "deployment started...."
+          echo "deployment finished...."
