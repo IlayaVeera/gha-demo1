@@ -34,6 +34,11 @@ jobs:
         run: npm ci
       - name: build jobs
         run: npm run build
+      - name: upload artifacts
+        run: actions/upload-artifact@v4
+        with:
+          name: dist-file
+          path: dist
 
   deploy:
     needs: build
