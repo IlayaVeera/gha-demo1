@@ -16,7 +16,6 @@ jobs:
         with:
           node-version: latest
       - name: cache dependencies
-        id: cache
         uses: actions/cache@v4
         with:
           path: ~/.npm
@@ -37,13 +36,11 @@ jobs:
         with:
           node-version: latest
       - name: cache dependencies
-        id: cache
         uses: actions/cache@v4
         with:
           path: ~/.npm
           key: dep-key-${{ hashFiles('**/package-lock.json') }}
       - name: install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: build jobs
         run: npm run build
