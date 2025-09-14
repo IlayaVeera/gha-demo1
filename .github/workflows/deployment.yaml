@@ -37,5 +37,5 @@ jobs:
       - name: deploy
         run: echo "deploying...."
       - name: status check 
-        if: github.event_name == workflow_dispatch
+        if: ${{ github.event_name == 'workflow_dispatch' }}
         run: echo "success"
