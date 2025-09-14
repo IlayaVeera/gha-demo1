@@ -1,4 +1,4 @@
-name: deployment
+name: deployment2
 on: 
   push:
     branches:
@@ -17,8 +17,6 @@ jobs:
           node-version: latest
       - name: install dependencies
         run: npm ci
-      - name: Lint code
-        run: npm run lint
       - name: run test
         run: npm run test
 
