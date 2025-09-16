@@ -23,7 +23,7 @@ jobs:
   dev: 
     environment: development
     env:
-      DB_USER: ${{ secrets.db_user }}
+      DB_USER: ${{ vars.db_user }}
       DB_PASS: ${{ secrets.db_pass }}
       PORT: 6000
     runs-on: ubuntu-latest
@@ -40,7 +40,7 @@ jobs:
   prod:
     environment: production
     env:
-      DB_USER: ${{ secrets.db_user }}
+      DB_USER: ${{ vars.db_user }}
       DB_PASS: ${{ secrets.db_pass }}
     runs-on: ubuntu-latest
     steps:
