@@ -1,4 +1,4 @@
-name: env_var_test
+name: deployment3
 on: 
   push:
     branches:
@@ -46,6 +46,6 @@ jobs:
     steps:
       - name: credentials
         run: |
-          echo "DB_USER: ${{ DB_USER }}"
-          echo "DB_PASS: ${{ DB_PASS }}"
-          echo "PORT: ${{ PORT }}"
+          echo "DB_USER: ${{ env.DB_USER }}"
+          echo "DB_PASS: ${{ env.DB_PASS }}"
+          echo "PORT: ${{ env.PORT }}"
