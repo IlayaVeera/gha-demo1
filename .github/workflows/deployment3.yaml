@@ -1,0 +1,51 @@
+name: env_var_test
+on: 
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+env: 
+    PORT: 8080
+jobs:
+  secrets:
+    env:
+      DB_USER: ${{ secrets.db_user }}
+      DB_PASS: ${{ secrets.db_pass }}
+      PORT: 5000
+    runs-on: ubuntu-latest
+    steps:
+      - name: credentials
+        run: |
+          echo "DB_USER: $DB_USER"
+          echo "DB_PASS: $DB_PASS"
+          echo "PORT: $PORT"
+  
+  dev: 
+    environment: development
+    env:
+      DB_USER: ${{ secrets.db_user }}
+      DB_PASS: ${{ secrets.db_pass }}
+      PORT: 6000
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: credentials
+        env:
+          PORT: 7000
+        run: |
+          echo "DB_USER: $DB_USER"
+          echo "DB_PASS: $DB_PASS"
+          echo "PORT: $PORT"
+  
+  prod:
+    environment: production
+    env:
+      DB_USER: ${{ secrets.db_user }}
+      DB_PASS: ${{ secrets.db_pass }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: credentials
+        run: |
+          echo "DB_USER: ${{ DB_USER }}"
+          echo "DB_PASS: ${{ DB_PASS }}"
+          echo "PORT: ${{ PORT }}"
