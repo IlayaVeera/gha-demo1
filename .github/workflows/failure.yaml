@@ -1,4 +1,4 @@
-name: continue_on_error
+name: failure
 on: 
   push:
     branches:
@@ -26,7 +26,7 @@ jobs:
         id: lint
         run: npm run lint 
       - name: run test
-        if: steps.lint.outputs.outcome == 'failure'
+        if: failure()
         run: npm run test
 
   build:
